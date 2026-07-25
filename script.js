@@ -210,54 +210,7 @@ para sempre seu.`;
     });
   }
 
-  /* ---------------------------------------------------------
-     8) MÚSICA DE FUNDO (YouTube)
-  --------------------------------------------------------- */
-  let ytPlayer = null;
-  let ytReady = false;
-  let pendingPlay = false;
-
-  // A API do YouTube chama esta função global automaticamente quando carrega.
-  window.onYouTubeIframeAPIReady = function () {
-    ytPlayer = new YT.Player('ytPlayer', {
-      height: '1',
-      width: '1',
-      videoId: 'C63DnA-2D-c',
-      playerVars: { autoplay: 0, controls: 0, loop: 1 },
-      events: {
-        onReady: () => {
-          ytReady = true;
-          if (pendingPlay) ytPlayer.playVideo();
-        }
-      }
-    });
-  };
-
-  function setupMusic() {
-    const musicBtn = document.getElementById('musicBtn');
-    const musicIcon = document.getElementById('musicIcon');
-    let playing = false;
-
-    musicBtn.addEventListener('click', () => {
-      playing = !playing;
-
-      if (playing) {
-        musicIcon.textContent = '⏸';
-        musicBtn.classList.add('playing');
-        if (ytReady && ytPlayer) {
-          ytPlayer.playVideo();
-        } else {
-          pendingPlay = true;
-        }
-      } else {
-        musicIcon.textContent = '🎵';
-        musicBtn.classList.remove('playing');
-        if (ytReady && ytPlayer) ytPlayer.pauseVideo();
-        pendingPlay = false;
-      }
-    });
-  }
-
+ 
   /* ---------------------------------------------------------
      9) GALERIA — brilho já tratado via CSS :hover
      (mantido aqui para eventuais efeitos extras via JS)
