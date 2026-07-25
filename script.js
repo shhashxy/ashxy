@@ -440,3 +440,19 @@ para sempre seu.`;
   }
 
 });
+const musicBtn = document.getElementById("musicBtn");
+const musicIcon = document.getElementById("musicIcon");
+const youtubePlayer = document.getElementById("youtubePlayer");
+
+musicBtn.addEventListener("click", () => {
+    youtubePlayer.contentWindow.postMessage(
+        JSON.stringify({
+            event: "command",
+            func: "playVideo",
+            args: []
+        }),
+        "*"
+    );
+
+    musicIcon.textContent = "🎶";
+});
